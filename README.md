@@ -4,6 +4,8 @@
 
 **Plans You Can Check: Verifier-Grounded Learning of an Open-Weight Planner for Executable Video-Editing** (EMNLP 2026)
 
+<p align="center"><img src="assets/teaser.png" width="88%" alt="From implicit to explicit planning"></p>
+
 RefineCut treats video editing as *executable video-editing planning*: a planner edits a typed timeline through structured `RefinePatch` operations, and a deterministic verifier applies each patch and re-checks an explicit constraint ledger. The planner is trained in two stages — verifier-replayed distillation of multi-teacher trajectories, then verifier-centered self-improvement (RefineCut-Evo) — and runs in a closed verifier loop with no teacher calls at inference.
 
 ## Planned repository layout
@@ -20,6 +22,23 @@ examples/         a worked task with its verifier replay
 ```
 
 **RefineCut-Bench** — the benchmark (3,578 tasks with briefs and constraint ledgers, clip and music metadata for 7,971 captioned clips and 499 tracks, all splits, and the canonicalized multi-teacher trajectories with per-branch verifier replay scores) — will be released on Hugging Face alongside the code.
+
+## Figures from the paper
+
+**Framework** — noisy teacher trajectories become verified supervision; verifier- and rubric-scored student repairs drive self-improvement and closed-loop planning:
+
+<p align="center"><img src="assets/framework.png" width="95%" alt="Framework"></p>
+
+**RefineCut-Bench overview** — real clip/music metadata, explicit ledger constraints, multi-teacher trajectories, and verifier-based evaluation in one planning-level protocol:
+
+<p align="center"><img src="assets/bench_overview.png" width="95%" alt="RefineCut-Bench overview"></p>
+
+<p align="center">
+<img src="assets/training_progression.png" width="46%" alt="Training-stage progression">
+&nbsp;
+<img src="assets/failure_composition.png" width="46%" alt="Failure composition">
+</p>
+<p align="center"><em>Left: Common-100 VES across training stages. Right: closed-loop failure composition (OK plans 74&rarr;91, duration mismatches 16&rarr;1).</em></p>
 
 ## Citation
 
