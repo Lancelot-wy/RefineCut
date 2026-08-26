@@ -62,12 +62,15 @@ examples/         a worked task with its verifier replay
 
 ## Citation
 
+Accepted to EMNLP 2026 (Main Conference); the arXiv preprint and the official proceedings entry will be linked here once available.
+
 ```bibtex
 @inproceedings{refinecut2026,
   title     = {Plans You Can Check: Verifier-Grounded Learning of an Open-Weight Planner for Executable Video-Editing},
   author    = {Wang, Haoyu and Feng, Cheng and Bian, Liuyang and Huang, Ruiyang and Wei, Lei and Wen, Yafei and Chen, Xiaoxin and Tang, Xiaoying},
   booktitle = {Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
-  year      = {2026}
+  year      = {2026},
+  note      = {to appear}
 }
 ```
 
