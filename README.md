@@ -1,14 +1,53 @@
+<div align="center">
+
 # RefineCut
 
-> 🚧 **Under construction** — this repository accompanies our EMNLP 2026 paper and is being prepared for the camera-ready release. The code and benchmark are being cleaned for publication and will appear here; the layout below shows what is coming.（维护中：代码与基准整理发布中，以下为规划的仓库结构。）
+**Plans You Can Check: Verifier-Grounded Learning of an Open-Weight Planner for Executable Video-Editing**
 
-**Plans You Can Check: Verifier-Grounded Learning of an Open-Weight Planner for Executable Video-Editing** (EMNLP 2026)
+EMNLP 2026 (Main Conference)
 
-<p align="center"><img src="assets/teaser.png" width="88%" alt="From implicit to explicit planning"></p>
+[![Venue](https://img.shields.io/badge/EMNLP%202026-Main%20Conference-4b6bab)](#citation)
+[![Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-RefineCut--Bench-ffcc4d)](https://huggingface.co/datasets/Randallhy/RefineCut-Bench)
+[![License](https://img.shields.io/badge/License-Apache%202.0-2ea44f)](LICENSE)
 
-RefineCut treats video editing as *executable video-editing planning*: a planner edits a typed timeline through structured `RefinePatch` operations, and a deterministic verifier applies each patch and re-checks an explicit constraint ledger. The planner is trained in two stages — verifier-replayed distillation of multi-teacher trajectories, then verifier-centered self-improvement (RefineCut-Evo) — and runs in a closed verifier loop with no teacher calls at inference.
+<img src="assets/teaser.png" width="88%" alt="From implicit to explicit planning">
 
-## Planned repository layout
+</div>
+
+RefineCut treats video editing as *executable video-editing planning*: a planner edits a typed timeline
+through structured `RefinePatch` operations, and a deterministic verifier applies each patch and re-checks an
+explicit constraint ledger. The planner is trained in two stages — verifier-replayed distillation of
+multi-teacher trajectories, then verifier-centered self-improvement (**RefineCut-Evo**) — and runs in a closed
+verifier loop with no teacher calls at inference.
+
+**Status**: code release in preparation for the camera-ready.
+
+## Framework
+
+<p align="center"><img src="assets/framework.png" width="95%" alt="RefineCut framework"></p>
+
+## RefineCut-Bench
+
+3,578 tasks with briefs and explicit constraint ledgers, schema-constrained captions and metadata for 7,971
+real clips and 499 music tracks, all splits, and the canonicalized multi-teacher trajectories with per-branch
+verifier replay scores — to be released at
+[Randallhy/RefineCut-Bench](https://huggingface.co/datasets/Randallhy/RefineCut-Bench).
+
+<p align="center"><img src="assets/bench_overview.png" width="95%" alt="RefineCut-Bench overview"></p>
+
+## Results
+
+Verifier-replayed distillation lifts an 8B planner from 0.620 to 0.858 VES on RefineCut-Bench, and
+RefineCut-Evo reaches 0.924 — beside its frontier teachers in the identical closed loop, with the
+verified-over-raw gain carrying over to Llama-3.1-8B and GLM-4-9B.
+
+<p align="center">
+<img src="assets/training_progression.png" width="46%" alt="Training-stage progression">
+&nbsp;
+<img src="assets/failure_composition.png" width="46%" alt="Failure composition">
+</p>
+
+## Repository layout
 
 ```
 refinecut/        typed timeline state, constraint ledger, RefinePatch apply, caption schema
@@ -20,25 +59,6 @@ schemas/          JSON schemas: constraint ledger, edit plan, RefinePatch,
 docs/             metric definitions, VES formula, verifier implementation notes
 examples/         a worked task with its verifier replay
 ```
-
-**RefineCut-Bench** — the benchmark (3,578 tasks with briefs and constraint ledgers, clip and music metadata for 7,971 captioned clips and 499 tracks, all splits, and the canonicalized multi-teacher trajectories with per-branch verifier replay scores) — will be released on Hugging Face alongside the code.
-
-## Figures from the paper
-
-**Framework** — noisy teacher trajectories become verified supervision; verifier- and rubric-scored student repairs drive self-improvement and closed-loop planning:
-
-<p align="center"><img src="assets/framework.png" width="95%" alt="Framework"></p>
-
-**RefineCut-Bench overview** — real clip/music metadata, explicit ledger constraints, multi-teacher trajectories, and verifier-based evaluation in one planning-level protocol:
-
-<p align="center"><img src="assets/bench_overview.png" width="95%" alt="RefineCut-Bench overview"></p>
-
-<p align="center">
-<img src="assets/training_progression.png" width="46%" alt="Training-stage progression">
-&nbsp;
-<img src="assets/failure_composition.png" width="46%" alt="Failure composition">
-</p>
-<p align="center"><em>Left: Common-100 VES across training stages. Right: closed-loop failure composition (OK plans 74&rarr;91, duration mismatches 16&rarr;1).</em></p>
 
 ## Citation
 
@@ -53,4 +73,5 @@ examples/         a worked task with its verifier replay
 
 ## License
 
-Code: Apache-2.0. RefineCut-Bench will be released separately under CC BY-NC 4.0; raw video clips and music are referenced by their public source identifiers and are not redistributed.
+Code: Apache-2.0. RefineCut-Bench will be released separately under CC BY-NC 4.0; raw video clips and music are
+referenced by their public source identifiers and are not redistributed.
