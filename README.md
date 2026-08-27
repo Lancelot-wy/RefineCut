@@ -7,6 +7,7 @@
 EMNLP 2026 (Main Conference)
 
 [![Venue](https://img.shields.io/badge/EMNLP%202026-Main%20Conference-4b6bab)](#citation)
+[![arXiv](https://img.shields.io/badge/arXiv-2608.25622-b31b1b)](https://arxiv.org/abs/2608.25622)
 [![Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-RefineCut--Bench-ffcc4d)](https://huggingface.co/datasets/Randallhy/RefineCut-Bench)
 [![License](https://img.shields.io/badge/License-Apache%202.0-2ea44f)](LICENSE)
 
@@ -62,7 +63,7 @@ examples/         a worked task with its verifier replay
 
 ## Citation
 
-Accepted to EMNLP 2026 (Main Conference); the arXiv preprint and the official proceedings entry will be linked here once available.
+Paper: [arXiv:2608.25622](https://arxiv.org/abs/2608.25622) — accepted to EMNLP 2026 (Main Conference); the official proceedings entry will be linked here once available.
 
 ```bibtex
 @inproceedings{refinecut2026,
